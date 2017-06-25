@@ -1,11 +1,14 @@
-package misClases;
+package Pila;
+
 
 import miInterface.Pila.Pila;
+
 
 public class ArrayPila <E> implements Pila<E>{
     protected static final int TAMAÑO=50;
     protected E []arP;
     protected int tope;
+
 
     public ArrayPila() {
         arP=(E[])new Object[TAMAÑO];

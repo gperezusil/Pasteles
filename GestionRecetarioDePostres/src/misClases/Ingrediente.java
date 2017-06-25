@@ -35,10 +35,11 @@ public class Ingrediente {
         this.Cantidad = Cantidad;
     }
     
-    private String ToString(){
+    @Override
+    public String toString(){
         
         return "\n Nombre del ingrediente :"+NombreIngrediente+
-                "\n Cantidad de ingredientes :"+Cantidad;
+                "\n Cantidad:"+Cantidad;
         
     }
     

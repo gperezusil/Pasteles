@@ -5,10 +5,58 @@
  */
 package misClases;
 
+import ListaEnlazada.ListaLEG;
+
 /**
  *
  * @author USUARIO
  */
 public class Postre {
+    private String codigoPostre;
+    private String nombrePostre;
+    private ListaLEG<Ingrediente> listaIngrediente;
+
+    public Postre(String codigoPostre, String nombrePostre, ListaLEG<Ingrediente> listaIngrediente) {
+        this.codigoPostre = codigoPostre;
+        this.nombrePostre = nombrePostre;
+        this.listaIngrediente = listaIngrediente;
+    }
+
+    public String getCodigoPostre() {
+        return codigoPostre;
+    }
+
+    public void setCodigoPostre(String codigoPostre) {
+        this.codigoPostre = codigoPostre;
+    }
+
+    public String getNombrePostre() {
+        return nombrePostre;
+    }
+
+    public void setNombrePostre(String nombrePostre) {
+        this.nombrePostre = nombrePostre;
+    }
+
+    public ListaLEG<Ingrediente> getListaIngrediente() {
+        return listaIngrediente;
+    }
+
+    public void setListaIngrediente(ListaLEG<Ingrediente> listaIngrediente) {
+        this.listaIngrediente = listaIngrediente;
+    }
+    
+    @Override
+    public String toString()
+    {
+        String cad = "";
+        cad = "\n Codigo de Postre: " + codigoPostre+
+                "\n Nombre de Postre : " + nombrePostre+
+                "\n Lista de Ingredientes: " + 
+                "\n" +listaIngrediente.mostarLista() ;
+        
+        return cad;
+        
+    }
     
 }

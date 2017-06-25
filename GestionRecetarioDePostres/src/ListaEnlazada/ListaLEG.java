@@ -7,11 +7,21 @@ public class ListaLEG <E extends Ingrediente >{
     private Nodo<E> primero;
     private int talla; 
 
+    public void setPrimero(Nodo<E> primero) {
+        this.primero = primero;
+    }
+
     public ListaLEG() {
         this.primero=null;
         this.talla=0;
     }
-
+  public boolean esVacia(){
+        if(primero==null){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public Nodo<E> getPrimero() {
         return primero;
     }
@@ -45,6 +55,20 @@ public class ListaLEG <E extends Ingrediente >{
         }
         talla++;               
     }
+    public boolean encontrarDato(E x)
+    {
+        Nodo<E> aux = getPrimero();
+        while(aux!=null)
+        {
+            if(aux.getDato()==x)
+            {
+                return true;
+            }
+            aux=aux.getSiguiente();
+        }
+        return false;
+    }
+    
     
     //método que elimina un nodo especifico
     public void eliminarDato(E x){
@@ -71,12 +95,12 @@ public class ListaLEG <E extends Ingrediente >{
         Nodo<E> aux=primero;
         
         while(aux!=null){
-            cad+=aux.getDato().toString()+"\n";
+            cad+=aux.getDato()+"\n";
             aux=aux.getSiguiente();
         }        
         return cad;
     }
-    
+ 
     //método que elimine el ultimo nodo de la lista
     // precondicion : lista no vacia
     public void eliminarUltimo(){
@@ -118,7 +142,8 @@ public class ListaLEG <E extends Ingrediente >{
             {
                 insertarAlFinal(x);
             }
-            else if(aux.getDato().getNombreIngrediente()== x.getNombreIngrediente())
+            else 
+                if(aux.getDato().getNombreIngrediente()==x.getNombreIngrediente())
             {
                 JOptionPane.showMessageDialog(null, "Ingrediente ya existe ");
             }
@@ -127,21 +152,19 @@ public class ListaLEG <E extends Ingrediente >{
                 r.setSiguiente(nuevo);
                 nuevo.setSiguiente(aux);
                 talla++;
+         
             }           
         }        
     }
       public String mostarLista()
       {
-         
-        String contenido="";
-        Nodo<E> aux=primero;
-         
-        while(aux!=null){
-            contenido+=aux.getDato()+"\n"; //guardamos el dato
-            aux=aux.getSiguiente();
+         String res="";
+        
+        for(Nodo<E> aux=primero; aux!=null; aux=aux.getSiguiente()){
+            res+=aux.getDato().toString() + "\n";
         }
-         
-        return contenido;
+        return res;
+       
     }
 
     
