@@ -27,7 +27,6 @@ DefaultTableModel modelo;
 ListaLEG<Ingrediente> listaIngredientes;
     ArrayPila<Postre> listaPostre;
     GestionarPostres postre;
-Ingrediente ingre ;
 Postre pos;
     /**
      * Creates new form Principal
@@ -269,7 +268,7 @@ Postre pos;
     private void jAgregarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarIngredienteActionPerformed
         String nomIngre = jNombIngre.getText();
         int cant=Integer.parseInt(jCantidad.getSelectedItem().toString());
-        ingre =new Ingrediente(nomIngre,cant);
+        Ingrediente ingre =new Ingrediente(nomIngre,cant);
         listaIngredientes.agregarIngrediente(ingre);
         JOptionPane.showMessageDialog(this, "Ingrediente agregado correctamente");        
         jCantidad.setSelectedIndex(0);
@@ -281,8 +280,11 @@ Postre pos;
        String codigo=jCodigo.getText();
        String nombre = jNomPostre.getText();
        pos=new Postre(codigo,nombre ,listaIngredientes);       
-       postre.agregarPostre(pos);
+      
        
+        listaIngredientes= new ListaLEG<Ingrediente>();
+        
+         postre.agregarPostre(pos);
         jCodigo.setText(""); 
         jNomPostre.setText(""); 
     }//GEN-LAST:event_jAgregarPostreActionPerformed
