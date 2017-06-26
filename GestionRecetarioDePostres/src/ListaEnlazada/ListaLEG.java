@@ -71,10 +71,10 @@ public class ListaLEG <E extends Ingrediente >{
     
     
     //método que elimina un nodo especifico
-    public void eliminarDato(E x){
+    public void eliminarIngrediente(String cod){
         Nodo<E> ant=null, aux=primero;
         
-        while(aux!=null && !aux.getDato().equals(x)){
+        while(aux!=null && !aux.getDato().getNombreIngrediente().equalsIgnoreCase(cod)){
             ant=aux;
             aux=aux.getSiguiente();
         }
@@ -90,16 +90,7 @@ public class ListaLEG <E extends Ingrediente >{
     }
     
     //método redefinido toString()
-    public String toString(){
-        String cad="";
-        Nodo<E> aux=primero;
-        
-        while(aux!=null){
-            cad+=aux.getDato()+"\n";
-            aux=aux.getSiguiente();
-        }        
-        return cad;
-    }
+    
  
     //método que elimine el ultimo nodo de la lista
     // precondicion : lista no vacia

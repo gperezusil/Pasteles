@@ -33,10 +33,12 @@ public class NewMain {
     pos = new Postre("01", "carlos", listaIngredientes);
     ges.agregarPostre(pos);
     
-        System.out.println(ges.MostrarPostres());
-    
+       
+        System.out.println(ges.MostrarIngredientes("01"));
      
-
+        listaIngredientes.eliminarIngrediente("azucar");
+        System.out.println("---------------------------");
+        System.out.println(listaIngredientes.mostarLista());
     
     }
     
