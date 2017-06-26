@@ -55,18 +55,21 @@ public class ListaLEG <E extends Ingrediente >{
         }
         talla++;               
     }
-    public boolean encontrarDato(E x)
-    {
+    public Ingrediente encontrarDato(String nom)
+    {   Ingrediente ingre=null;
         Nodo<E> aux = getPrimero();
+
         while(aux!=null)
         {
-            if(aux.getDato()==x)
+            
+            if(aux.getDato().getNombreIngrediente().equalsIgnoreCase(nom))
             {
-                return true;
+                return ingre;
+
             }
             aux=aux.getSiguiente();
         }
-        return false;
+        return ingre;
     }
     
     

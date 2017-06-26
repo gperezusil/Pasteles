@@ -37,8 +37,9 @@ Postre pos;
         postre = new GestionarPostres();
         listaPostre= new ArrayPila<>();
         postre =new GestionarPostres();
+        listar();
     }
-
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +49,7 @@ Postre pos;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jMostrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -65,6 +67,9 @@ Postre pos;
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,8 +124,6 @@ Postre pos;
 
         jLabel4.setText("Nombre");
         jLabel4.setToolTipText("");
-
-        jCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100" }));
 
         jLabel5.setText("gr.");
 
@@ -185,6 +188,13 @@ Postre pos;
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,15 +208,17 @@ Postre pos;
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jAgregarPostre)
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1)
+                                    .addComponent(jAgregarPostre))
+                                .addGap(34, 34, 34)
+                                .addComponent(jButton4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -225,7 +237,9 @@ Postre pos;
                             .addComponent(jAgregarPostre)
                             .addComponent(jButton4))
                         .addGap(35, 35, 35)
-                        .addComponent(jMostrar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jMostrar)
+                            .addComponent(jButton1))
                         .addGap(0, 89, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -256,6 +270,17 @@ Postre pos;
             System.out.println("Error en la conexion ...");
         }                
     }*/
+    
+     void listar()
+     {
+         for (int i = 100; i < 500; i++)
+         {
+             if(i%10==0)
+             {
+             jCantidad.addItem(String.valueOf(i));
+             }
+         }
+     }
     private void jMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMostrarActionPerformed
        
         jTextArea1.setText("");  
@@ -288,6 +313,12 @@ Postre pos;
         jCodigo.setText(""); 
         jNomPostre.setText(""); 
     }//GEN-LAST:event_jAgregarPostreActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+       String nombre = jNombIngre.getText();
+       listaIngredientes.eliminarIngrediente(nombre);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +358,7 @@ Postre pos;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAgregarIngrediente;
     private javax.swing.JButton jAgregarPostre;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCantidad;
     private javax.swing.JTextField jCodigo;
@@ -342,5 +374,6 @@ Postre pos;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

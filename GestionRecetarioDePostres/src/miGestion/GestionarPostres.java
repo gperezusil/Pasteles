@@ -51,6 +51,14 @@ public class GestionarPostres {
         return refV;
     }
      
+     public String mostrarPostreIngredientes(String nom)
+     {
+        String cad="";
+        
+        
+        return cad;
+     }
+     
      public String MostrarIngredientes(String cod){
         String cad="";
         Postre veh=buscarPostre(cod);
