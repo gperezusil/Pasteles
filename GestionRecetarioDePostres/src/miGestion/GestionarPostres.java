@@ -51,6 +51,14 @@ public class GestionarPostres {
         return refV;
     }
      
+     public String mostrarPostreIngredientes(String nom)
+     {
+        String cad="";
+        
+        
+        return cad;
+     }
+     
      public String MostrarIngredientes(String cod){
         String cad="";
         Postre veh=buscarPostre(cod);
@@ -59,12 +67,18 @@ public class GestionarPostres {
             cad="Postre no se encuentra "
                     + "\n en la Lista";
         }else{            
-            cad="lista de Ingredientes : " +
+            cad="Datos del Postre: " +
                  veh.toString();
         }
         return cad;        
     }
      
+     public String MostrarPostresConIngredientes(String ingre)
+     {
+         String cad ="";
+         
+         return cad;
+     }       
      public String MostrarPostres()
      {
          String res="";

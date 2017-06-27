@@ -39,7 +39,7 @@ public class Ingrediente {
     public String toString(){
         
         return "\n Nombre del ingrediente :"+NombreIngrediente+
-                "\n Cantidad:"+Cantidad;
+                "\n Cantidad:"+Cantidad+"gr.";
         
     }
     
