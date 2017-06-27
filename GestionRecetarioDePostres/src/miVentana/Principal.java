@@ -37,6 +37,7 @@ Postre pos;
         postre = new GestionarPostres();
         listaPostre= new ArrayPila<>();
         postre =new GestionarPostres();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -269,8 +270,7 @@ Postre pos;
         String nomIngre = jNombIngre.getText();
         int cant=Integer.parseInt(jCantidad.getSelectedItem().toString());
         Ingrediente ingre =new Ingrediente(nomIngre,cant);
-        listaIngredientes.agregarIngrediente(ingre);
-        JOptionPane.showMessageDialog(this, "Ingrediente agregado correctamente");        
+        listaIngredientes.agregarIngrediente(ingre);     
         jCantidad.setSelectedIndex(0);
         jNombIngre.setText("");
       

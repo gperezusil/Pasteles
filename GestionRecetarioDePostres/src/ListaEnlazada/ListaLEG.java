@@ -123,13 +123,24 @@ public class ListaLEG <E extends Ingrediente >{
          Nodo<E> nuevo=new Nodo<>(x);
          Nodo<E> aux=primero, r=null;
        
-        if(primero==null)
+         boolean estado =false;
+        while(aux!=null && estado==false){
+            if(aux.getDato().getNombreIngrediente().equalsIgnoreCase(x.getNombreIngrediente()))
+               {
+                estado=true;
+            }else{
+                aux=aux.getSiguiente();
+            }
+        }        
+           if(estado==false)
+           {
+               if(primero==null)
         {
             insertarAlInicio(x);
         }
-        else
-        {            
-            while(aux!=null && aux.getDato().getNombreIngrediente().compareTo(x.getNombreIngrediente())<0 )
+               else
+               {
+           while(aux!=null && aux.getDato().getNombreIngrediente().compareToIgnoreCase(x.getNombreIngrediente())<0)
             {
                 r=aux;
                 aux=aux.getSiguiente();
@@ -142,19 +153,18 @@ public class ListaLEG <E extends Ingrediente >{
             {
                 insertarAlFinal(x);
             }
-            else 
-                if(aux.getDato().getNombreIngrediente()==x.getNombreIngrediente())
-            {
-                JOptionPane.showMessageDialog(null, "Ingrediente ya existe ");
-            }
             else
             {
                 r.setSiguiente(nuevo);
                 nuevo.setSiguiente(aux);
                 talla++;
-         
-            }           
-        }        
+            }   
+          
+        }
+           }
+        else{
+            JOptionPane.showMessageDialog(null, "Ingrediente ya existe ....");
+        }   
     }
       public String mostarLista()
       {
