@@ -1,7 +1,8 @@
 package Pila;
 
 
-import miInterface.Pila.Pila;
+import Pila.Pila;
+import misClases.Postre;
 
 
 public class ArrayPila <E> implements Pila<E>{
@@ -59,5 +60,5 @@ public class ArrayPila <E> implements Pila<E>{
         }       
         return res;
     }  
-    
+   
 }

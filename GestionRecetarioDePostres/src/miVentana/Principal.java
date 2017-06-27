@@ -6,6 +6,7 @@
 package miVentana;
 
 import ListaEnlazada.ListaLEG;
+import ListaEnlazada.Nodo;
 import Pila.ArrayPila;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +29,7 @@ ListaLEG<Ingrediente> listaIngredientes;
     ArrayPila<Postre> listaPostre;
     GestionarPostres postre;
 Postre pos;
+
     /**
      * Creates new form Principal
      */
@@ -37,11 +39,12 @@ Postre pos;
         postre = new GestionarPostres();
         listaPostre= new ArrayPila<>();
         postre =new GestionarPostres();
-<<<<<<< HEAD
         setLocationRelativeTo(this);
-=======
+        jMostrar.setVisible(false);
+       jTablePostres.setVisible(false);
+
         listar();
->>>>>>> 00cef3273da391e958ba3bbf8c5bd793fb5168ce
+
     }
       
     /**
@@ -54,6 +57,7 @@ Postre pos;
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jMostrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,15 +73,21 @@ Postre pos;
         jAgregarIngrediente = new javax.swing.JButton();
         jAgregarPostre = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jEliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableIngredientes = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jTablePostres = new javax.swing.JTable();
+        jMostrar1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMostrar.setText("Mostrar");
         jMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMostrarActionPerformed(evt);
@@ -188,16 +198,46 @@ Postre pos;
 
         jButton4.setText("Nuevo Postre");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jEliminar.setText("Eliminar");
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jEliminarActionPerformed(evt);
             }
         });
+
+        jTableIngredientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Cantidad"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableIngredientes);
+
+        jLabel6.setText("Lista de Ingredientes");
+
+        jLabel7.setText("Lista de Postres");
+
+        jTablePostres.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre"
+            }
+        ));
+        jScrollPane2.setViewportView(jTablePostres);
+
+        jMostrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMostrar1ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,10 +245,6 @@ Postre pos;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jMostrar)
-                        .addGap(44, 44, 44))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -219,20 +255,44 @@ Postre pos;
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(jEliminar)
                                     .addComponent(jAgregarPostre))
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jButton4))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(jMostrar)))))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jMostrar1)
+                        .addGap(128, 128, 128)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,10 +302,10 @@ Postre pos;
                             .addComponent(jButton4))
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jMostrar)
-                            .addComponent(jButton1))
-                        .addGap(0, 89, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                            .addComponent(jEliminar)
+                            .addComponent(jMostrar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jMostrar1)))
                 .addContainerGap())
         );
 
@@ -277,21 +337,35 @@ Postre pos;
     
      void listar()
      {
-         for (int i = 100; i < 500; i++)
+         for (int i = 100; i <= 500; i++)
          {
-             if(i%10==0)
+             if(i%50==0)
              {
              jCantidad.addItem(String.valueOf(i));
              }
          }
      }
+     
+    private void limpiar(){
+       for (int i = 0; i < jTableIngredientes.getRowCount(); i++) {
+           modelo.removeRow(i);
+           i-=1;
+       }
+   }
     private void jMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMostrarActionPerformed
        
-        jTextArea1.setText("");  
-          jTextArea1.append(postre.MostrarPostres());
+        String []titulo={"Nombre","Cantidad"};
+        modelo=new DefaultTableModel(null,titulo);
         
-        
-    
+        Nodo<Ingrediente> aux=listaIngredientes.getPrimero();
+        while(aux!=null){
+            modelo.addRow(new String[]{aux.getDato().getNombreIngrediente(),
+                                  String.valueOf(aux.getDato().getCantidad())});
+            
+            aux=aux.getSiguiente();
+        }
+        jTableIngredientes.setModel(modelo);     
+
     }//GEN-LAST:event_jMostrarActionPerformed
 
     private void jAgregarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarIngredienteActionPerformed
@@ -302,6 +376,7 @@ Postre pos;
         jCantidad.setSelectedIndex(0);
         jNombIngre.setText("");
       
+        jMostrarActionPerformed(evt);
     }//GEN-LAST:event_jAgregarIngredienteActionPerformed
 
     private void jAgregarPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarPostreActionPerformed
@@ -315,13 +390,24 @@ Postre pos;
          postre.agregarPostre(pos);
         jCodigo.setText(""); 
         jNomPostre.setText(""); 
+        jMostrar1ActionPerformed(evt);
+        limpiar();
     }//GEN-LAST:event_jAgregarPostreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
         
        String nombre = jNombIngre.getText();
        listaIngredientes.eliminarIngrediente(nombre);
-    }//GEN-LAST:event_jButton1ActionPerformed
+       jMostrarActionPerformed(evt);
+       jNombIngre.setText("");
+    }//GEN-LAST:event_jEliminarActionPerformed
+
+    private void jMostrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMostrar1ActionPerformed
+      
+        jTextArea1.setText(postre.MostrarPostres());
+   
+        
+    }//GEN-LAST:event_jMostrar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,21 +447,29 @@ Postre pos;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAgregarIngrediente;
     private javax.swing.JButton jAgregarPostre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCantidad;
     private javax.swing.JTextField jCodigo;
+    private javax.swing.JButton jEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jMostrar;
+    private javax.swing.JButton jMostrar1;
     private javax.swing.JTextField jNomPostre;
     private javax.swing.JTextField jNombIngre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTableIngredientes;
+    private javax.swing.JTable jTablePostres;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables

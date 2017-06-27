@@ -15,11 +15,21 @@ public class Postre {
     private String codigoPostre;
     private String nombrePostre;
     private ListaLEG<Ingrediente> listaIngrediente;
+    private Postre sig;
+
+    public Postre getSig() {
+        return sig;
+    }
+
+    public void setSig(Postre sig) {
+        this.sig = sig;
+    }
 
     public Postre(String codigoPostre, String nombrePostre, ListaLEG<Ingrediente> listaIngrediente) {
         this.codigoPostre = codigoPostre;
         this.nombrePostre = nombrePostre;
         this.listaIngrediente = listaIngrediente;
+        this.sig=null;
     }
 
     public String getCodigoPostre() {

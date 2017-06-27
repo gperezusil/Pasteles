@@ -1,4 +1,4 @@
-package miInterface.Pila;
+package Pila;
 
 public interface Pila<E> {
     void apilar(E x);

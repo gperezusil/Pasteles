@@ -16,6 +16,7 @@ import misClases.Postre;
  */
 public class GestionarPostres {
     private  ArrayPila<Postre> listaPostre;
+   
 
     public GestionarPostres() {
         listaPostre= new ArrayPila<Postre>();
@@ -27,10 +28,8 @@ public class GestionarPostres {
     
     public void agregarPostre(Postre pos)
     {
-        listaPostre.apilar(pos);
-       
+       listaPostre.apilar(pos);
     }
-    
      public Postre buscarPostre(String codigo){
         Postre refV=null;        
         ArrayPila<Postre> pAux=new ArrayPila<Postre>();
@@ -97,4 +96,5 @@ public class GestionarPostres {
         return res;
      }
     
+     
 }
