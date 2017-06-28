@@ -30,7 +30,7 @@ public class GestionarPostres {
     {
        listaPostre.apilar(pos);
     }
-     public Postre buscarPostre(String codigo){
+     public Postre EliminarPostre(String codigo){
         Postre refV=null;        
         ArrayPila<Postre> pAux=new ArrayPila<Postre>();
         boolean estado =false;
@@ -50,17 +50,10 @@ public class GestionarPostres {
         return refV;
     }
      
-     public String mostrarPostreIngredientes(String nom)
-     {
-        String cad="";
-        
-        
-        return cad;
-     }
      
      public String MostrarIngredientes(String cod){
         String cad="";
-        Postre veh=buscarPostre(cod);
+        Postre veh=EliminarPostre(cod);
         
         if(veh==null){
             cad="Postre no se encuentra "
@@ -72,12 +65,7 @@ public class GestionarPostres {
         return cad;        
     }
      
-     public String MostrarPostresConIngredientes(String ingre)
-     {
-         String cad ="";
          
-         return cad;
-     }       
      public String MostrarPostres()
      {
          String res="";
@@ -95,6 +83,24 @@ public class GestionarPostres {
         }       
         return res;
      }
-    
+        public Postre buscarPostre(String codigo)
+        {
+             Postre refV=null;
+        
+       
+        boolean estado=false;
+        ArrayPila<Postre> aux = new ArrayPila<>();
+        while(!listaPostre.pilaVacia() && !estado){
+            Postre v=listaPostre.tope();
+            if(v.getCodigoPostre().equalsIgnoreCase(codigo)){
+                refV=v;
+                estado=true;
+            }else{
+                 aux.apilar(v);   
+            }  
+        }
+        
+        return refV;
+        }
      
 }
